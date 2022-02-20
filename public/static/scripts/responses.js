@@ -8,12 +8,12 @@ function getBotResponse(input) {
         return "rock";
     }
 
-    // Simple responses
-    if (input == "hello") {
-        return "Hello there!";
-    } else if (input == "goodbye") {
-        return "Talk to you later!";
-    } else {
-        return "Try asking something else!";
-    }
-}
+    $.ajax({
+        type:'POST',
+        url:'botman',
+        data:'',
+        success:function(data) {
+       console.log("56");
+        }
+     });
+  }

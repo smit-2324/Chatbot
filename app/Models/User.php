@@ -17,5 +17,8 @@ class User extends Model
     'residential_type',
     'address_type',
     'respondent_name_and_relation_with_candidate',
+    'signature',
+    'actual_data_lat',
+    'actual_data_long'
     ];
 }

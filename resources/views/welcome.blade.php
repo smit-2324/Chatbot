@@ -34,7 +34,14 @@
   padding: 5px 10px;
   position: relative;
 }
-
+html,
+      body,
+      #map {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
 </style>
 
 <body>
@@ -83,12 +90,9 @@
 
             </div>
         </div>
-
     </div>
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="static/scripts/responses.js"></script>
 <script src="static/scripts/chat.js"></script>
-
 </html>

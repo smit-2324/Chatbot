@@ -21,5 +21,8 @@ Route::get('/', function () {
 Route::get('sign', function () {
     return view('sign');
 });
+Route::get('map', function () {
+    return view('map');
+});
 Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
 

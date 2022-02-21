@@ -62,7 +62,7 @@ function getHardResponse(userText,step) {
 
 //Gets the text text from the input box and processes it
 function getResponse(step) {
-  
+  console.log("5656");
     let userText = $("#textInput").val();
 
     // if (userText == "") {
@@ -120,8 +120,40 @@ function yes(){
     
 }
 
-function imageUpload(){
+function latitude(){
+   
+    var lat = $("#lat").val();
+    var log = $("#log").val();
+  
+    var session = sessionStorage.setItem("lat" , lat);
+    var session = sessionStorage.setItem("log" , log);
+    var session = sessionStorage.setItem("lat1" , "23.345");
+    var session = sessionStorage.setItem("log1" , "72.3456");
 
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+    $.ajax({
+       type:'POST',
+       url:'ajaxRequest?step=1',
+       data:{lat,log},
+       success:function(data){
+        $("#external").val(data);
+        var step = 2;
+        getResponse(step);
+       }
+    });
+}
+
+function mapnext(){
+    var step = 3;
+    getResponse(step);
+}
+function imageUpload(){
+    var external_id = $("#external").val();
     var selfie_path = new FormData();
     var files = $('#file')[0].files[0];
     selfie_path.append('file', files);
@@ -133,13 +165,12 @@ function imageUpload(){
 
         $.ajax({
            type:'POST',
-           url:'ajaxRequest?step=1',
+           url:'ajaxRequest?external_id=' + external_id + '&step=3',
            data:selfie_path,
            contentType: false,
            processData: false,
            success:function(data){
-            $("#external").val(data);
-            var step = 2;
+            var step = 4;
             getResponse(step);
            }
         });
@@ -147,6 +178,8 @@ function imageUpload(){
 
 function addressProof(){
     var external_id = $("#external").val();
+    var session = sessionStorage.setItem("external_id", external_id);;
+    console.log('session',session);
     var fd = new FormData();
     var files = $('#file')[0].files[0];
     fd.append('file', files);
@@ -159,12 +192,12 @@ function addressProof(){
 
         $.ajax({
            type:'POST',
-           url:'ajaxRequest?external_id=' + external_id + '&step=2',
+           url:'ajaxRequest?external_id=' + external_id + '&step=4',
            data:fd,
            contentType: false,
            processData: false,
            success:function(){
-            var step = 3;
+            var step = 5;
             getResponse(step);
            }
         });
@@ -183,12 +216,12 @@ function idProof(){
 
         $.ajax({
            type:'POST',
-           url:'ajaxRequest?external_id=' + external_id + '&step=3',
+           url:'ajaxRequest?external_id=' + external_id + '&step=5',
            data:fd,
            contentType: false,
            processData: false,
            success:function(){
-            var step = 4;
+            var step = 6;
             getResponse(step);
            }
         });
@@ -209,13 +242,17 @@ function submitDocument(){
 
     $.ajax({
        type:'POST',
-       url:'ajaxRequest?external_id=' + external_id + '&step=4',
+       url:'ajaxRequest?external_id=' + external_id + '&step=6',
        data:{currentAddress,residentialType,addressProof,submitdocument},
        success:function(){
-        var step = 5;
+        var step = 7;
         getResponse(step);
        }
     });
 }
+
+
+
+
 
   

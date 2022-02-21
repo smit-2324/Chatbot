@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BotManController;
+use App\Http\Controllers\AjaxController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use App\Http\Controllers\BotManController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('botman', 'BotManController@index');
+
+Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');

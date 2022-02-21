@@ -120,12 +120,10 @@ function yes(){
 }
 
 function imageUpload(){
-    var step= 2;
 
-    var fd = new FormData();
+    var selfie_path = new FormData();
     var files = $('#file')[0].files[0];
-    fd.append('file', files);
- 
+    selfie_path.append('file', files);
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -134,11 +132,12 @@ function imageUpload(){
 
         $.ajax({
            type:'POST',
-           url:"ajaxRequest",
-           data:fd,
+           url:'ajaxRequest?step=1',
+           data:selfie_path,
            contentType: false,
            processData: false,
-           success:function(){
+           success:function(data){
+            $("#external").val(data);
             var step = 2;
             getResponse(step);
            }
@@ -146,7 +145,7 @@ function imageUpload(){
 }
 
 function addressProof(){
-    var step = 2;
+    var external_id = $("#external").val();
     var fd = new FormData();
     var files = $('#file')[0].files[0];
     fd.append('file', files);
@@ -159,8 +158,8 @@ function addressProof(){
 
         $.ajax({
            type:'POST',
-           url:"ajaxRequest",
-           data:{fd:fd,step:step},
+           url:'ajaxRequest?external_id=' + external_id + '&step=2',
+           data:fd,
            contentType: false,
            processData: false,
            success:function(){
@@ -170,7 +169,7 @@ function addressProof(){
         });
 }
 function idProof(){
-    var step = 4;
+    var external_id = $("#external").val();
     var fd = new FormData();
     var files = $('#file')[0].files[0];
     fd.append('file', files);
@@ -183,8 +182,8 @@ function idProof(){
 
         $.ajax({
            type:'POST',
-           url:"ajaxRequest",
-           data:{fd,step},
+           url:'ajaxRequest?external_id=' + external_id + '&step=3',
+           data:fd,
            contentType: false,
            processData: false,
            success:function(){
@@ -195,11 +194,12 @@ function idProof(){
 }
 
 function submitDocument(){
+  var external_id = $("#external").val();
   var currentAddress = $("#currentAddress").val();
   var residentialType = $("#residentialType").val();
   var addressProof = $("#AddressProof").val();
   var submitdocument = $("#submitdocument").val();
-  var step = 5;
+
   $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -208,8 +208,8 @@ function submitDocument(){
 
     $.ajax({
        type:'POST',
-       url:"ajaxRequest",
-       data:{currentAddress,residentialType,addressProof,submitdocument,step},
+       url:'ajaxRequest?external_id=' + external_id + '&step=4',
+       data:{currentAddress,residentialType,addressProof,submitdocument},
        success:function(){
         var step = 5;
         getResponse(step);

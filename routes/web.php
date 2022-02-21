@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+

@@ -11,7 +11,7 @@ function getBotResponse(input,step) {
     // Simple responses
 
 
-    switch (4) {
+    switch (step) {
         case 1:
             return "<label for='myfile'>SUpload your selfie: (Take the Selfie infront of your house):</label><input type='file' id='file' name='file' onChange='imageUpload()'/>"; 
              break;

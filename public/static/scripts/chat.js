@@ -49,14 +49,6 @@ function firstBotMessage() {
 
 firstBotMessage();
 
-function yes(){
-    $("#textInput").val('yes');
-    var step = 1;
-    getResponse(step);
-}
-
-
-
 
 // Retrieves the response
 function getHardResponse(userText,step) {
@@ -120,11 +112,20 @@ $("#textInput").keypress(function (e) {
 });
 
 
+function yes(){
+  var value =  $("#textInput").val('yes');
+    var step = 1;
+    getResponse(step);
+    
+}
+
 function imageUpload(){
+    var step= 2;
+
     var fd = new FormData();
     var files = $('#file')[0].files[0];
     fd.append('file', files);
-
+ 
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -145,6 +146,7 @@ function imageUpload(){
 }
 
 function addressProof(){
+    var step = 2;
     var fd = new FormData();
     var files = $('#file')[0].files[0];
     fd.append('file', files);
@@ -158,7 +160,7 @@ function addressProof(){
         $.ajax({
            type:'POST',
            url:"ajaxRequest",
-           data:fd,
+           data:{fd:fd,step:step},
            contentType: false,
            processData: false,
            success:function(){
@@ -168,6 +170,7 @@ function addressProof(){
         });
 }
 function idProof(){
+    var step = 4;
     var fd = new FormData();
     var files = $('#file')[0].files[0];
     fd.append('file', files);
@@ -181,7 +184,7 @@ function idProof(){
         $.ajax({
            type:'POST',
            url:"ajaxRequest",
-           data:fd,
+           data:{fd,step},
            contentType: false,
            processData: false,
            success:function(){
@@ -196,7 +199,7 @@ function submitDocument(){
   var residentialType = $("#residentialType").val();
   var addressProof = $("#AddressProof").val();
   var submitdocument = $("#submitdocument").val();
-
+  var step = 5;
   $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -206,9 +209,7 @@ function submitDocument(){
     $.ajax({
        type:'POST',
        url:"ajaxRequest",
-       data:{currentAddress,residentialType,addressProof,submitdocument},
-       contentType: false,
-       processData: false,
+       data:{currentAddress,residentialType,addressProof,submitdocument,step},
        success:function(){
         var step = 5;
         getResponse(step);

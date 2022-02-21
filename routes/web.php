@@ -18,6 +18,8 @@ use App\Http\Controllers\AjaxController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('sign', function () {
+    return view('sign');
+});
 Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
 

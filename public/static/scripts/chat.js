@@ -1,4 +1,5 @@
 // Collapsible
+
 var coll = document.getElementsByClassName("collapsible");
 
 for (let i = 0; i < coll.length; i++) {
@@ -35,8 +36,8 @@ function getTime() {
 
 // Gets the first message
 function firstBotMessage() {
-    let firstMessage = "Hello Test3,This is an Virtual Address Confirmation system on behalf of your new employer, kindly complete the process to proceed further,To Proceed further Please Click On Yes and Allow Location Services <button type='button' onclick='yes()' class='btn btn-info col-sm-5'>YES</button>" 
-   + "<button type='button' onclick='no()' class='btn btn-danger float-right col-sm-5'>NO</button>"
+    let firstMessage = "<span class='.direct-chat-text'>Hello Test3,<br><br>This is an Virtual Address Confirmation system on behalf of your new employer, kindly complete the process to proceed further,<br><br>To Proceed further Please Click On Yes and Allow Location Services<br> <button type='button' onclick='yes()' class='btn btn-info col-sm-5'>YES</button>"
+    + "<button type='button' onclick='no()' class='btn btn-danger float-right col-sm-5'>NO</button></span>";
   
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage  + '</span></p>';
 

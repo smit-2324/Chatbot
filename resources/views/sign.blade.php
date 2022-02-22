@@ -19,7 +19,7 @@ button {
 </style>
 <body>
 <canvas id="signature-pad" class="signature-pad" width=239px height=130px></canvas>
-<button id="save-png" class='btn-success'>Submit</button>
+<button id="save-png" class='btn-success'>Save</button>
 <button id="clear" class='btn-danger'>Clear</button>
 </body>
 </html>

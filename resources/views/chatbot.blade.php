@@ -19,6 +19,26 @@
     <script type="text/javascript" src="static/scripts/sign.js"></script>
 </head>
 <style>
+            .textBxDesign{
+            width: 100%;
+            height: auto;
+  box-sizing: border-box;
+        }
+
+        .btn-outline-info {
+    color: #0dcaf0;
+    border-color: #0dcaf0;
+    width: 235px;
+}
+
+    .fileText{
+        font-family: sans-serif;
+        font-size: 14px;
+        color: #494949;
+        position: relative;
+        font-weight: bold;
+    }
+
          #myCanvas {
             border:4px solid #444;
             border-radius: 15px;

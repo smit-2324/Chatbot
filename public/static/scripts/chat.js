@@ -36,8 +36,8 @@ function getTime() {
 
 // Gets the first message
 function firstBotMessage() {
-    let firstMessage = "<span class='.direct-chat-text'>Hello Test3,<br><br>This is an Virtual Address Confirmation system on behalf of your new employer, kindly complete the process to proceed further,<br><br>To Proceed further Please Click On Yes and Allow Location Services<br> <button type='button' onclick='yes()' class='btn btn-info col-sm-5'>YES</button>"
-    + "<button type='button' onclick='no()' class='btn btn-danger float-right col-sm-5'>NO</button></span>";
+    let firstMessage = "<span class='.direct-chat-text'>Hello Test3,<br><br>This is an Virtual Address Confirmation system on behalf of your new employer, kindly complete the process to proceed further,<br><br>To Proceed further Please Click On Yes and Allow Location Services<br> <button id='yes' type='button' onclick='yes()' class='btn btn-info col-sm-5'>YES</button>"
+    + "<button id='no' type='button' onclick='no()' class='btn btn-danger float-right col-sm-5'>NO</button></span>";
   
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage  + '</span></p>';
 
@@ -115,8 +115,10 @@ $("#textInput").keypress(function (e) {
 
 function yes(){
   var value =  $("#textInput").val('yes');
-    var step = 1;
-    getResponse(step);
+  var step = 1;
+  getResponse(step);
+  $("#yes").hide();
+  $("#no").hide();
 }
 
 function latitude(){
@@ -145,6 +147,7 @@ function latitude(){
         var session = sessionStorage.setItem("external_id", external_id);
         var step = 2;
         getResponse(step);
+        $("#latlogSubmit").hide();
        }
     });
 }
@@ -152,6 +155,7 @@ function latitude(){
 function mapnext(){
     var step = 3;
     getResponse(step);
+    $("NextBtnMAP").hide();
 }
 function imageUpload(){
     var external_id = $("#external").val();
@@ -173,6 +177,7 @@ function imageUpload(){
            success:function(data){
             var step = 4;
             getResponse(step);
+            $("#sUploadBtn").hide();
            }
         });
 }
@@ -200,6 +205,7 @@ function addressProof(){
            success:function(){
             var step = 5;
             getResponse(step);
+            $("#aUploadBtn").hide();
            }
         });
 }
@@ -224,6 +230,7 @@ function idProof(){
            success:function(){
             var step = 6;
             getResponse(step);
+            $("#proofeUploadBtn").hide();
            }
         });
 }
@@ -248,6 +255,7 @@ function submitDocument(){
        success:function(){
         var step = 7;
         getResponse(step);
+        $("#addressDataBtn").hide();
        }
     });
 }

@@ -28,6 +28,8 @@ document.getElementById('save-png').addEventListener('click', function () {
   var data = signaturePad.toDataURL('image/png');
 
   var external_id = sessionStorage.getItem("external_id");
+
+  var ajaxResult = null;
   $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -38,14 +40,19 @@ document.getElementById('save-png').addEventListener('click', function () {
            type:'POST',
            url:'ajaxRequest?external_id=' + external_id + '&step=7',
            data:{data:data},
-           success:function(){
+           async: false,
+           success:function(resp){
+             step = 8
+            parent.getResponse(8);
             sessionStorage.clear();
            }
         });
-
 });
 
 document.getElementById('clear').addEventListener('click', function () {
   signaturePad.clear();
 });
 
+function download(){
+
+}

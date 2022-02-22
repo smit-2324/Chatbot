@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
-   
+use PDF;
+use \Exception;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use File;
+use DB;
+
 class AjaxController extends Controller
 {
     public function findbyid($id){
@@ -63,6 +69,7 @@ class AjaxController extends Controller
                         ])->save();       
                     break;        
                 case 7:  
+                    
                     $external = $request->external_id;
                     $user = $this->findbyid($external);
                  
@@ -84,7 +91,22 @@ class AjaxController extends Controller
                     $user->fill([
                       'signature' =>  $file,
                         ])->save();   
+               
+                    $pdf = User::where('external_id',$external)->first();
+                    return $pdf;
                     break;  
             }
+    }
+    public function pdfgenerate(){
+        $customPaper = array(0,0,900.00,1400.00);
+        $pdf = PDF::loadView('userPdf')->setPaper($customPaper, 'square');
+     return $pdf->download('asd.pdf');
+        // $path = public_path('pdf/');
+        // $fileName =  'asd.pdf';
+        // $pdf->save($path . '/' . $fileName);
+
+        // $pdf = public_path('pdf/'.$fileName);
+   
+        // return response()->download($pdf);
     }
 }

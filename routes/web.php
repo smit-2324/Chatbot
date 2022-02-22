@@ -25,4 +25,7 @@ Route::get('map', function () {
     return view('map');
 });
 Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
-
+Route::get('pdfgenerate', [AjaxController::class, 'pdfgenerate'])->name('pdfgenerate');
+Route::get('userPdf', function () {
+    return view('userPdf');
+});

@@ -142,7 +142,9 @@ function latitude(){
        data:{lat,log},
        success:function(data){
         $("#external").val(data);
-        var step = 2;
+        var external_id = $("#external").val();
+        var session = sessionStorage.setItem("external_id", external_id);
+        var step = 7;
         getResponse(step);
        }
     });
@@ -251,8 +253,31 @@ function submitDocument(){
     });
 }
 
+function downloadpdf(resp){
 
+$.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
 
+  $.ajax({
+     type:'POST',
+     url:'pdfgenerate?step=8',
+     data:{resp},
+     xhrFields: {
+        responseType: 'blob'
+    },
+     success:function(response){
+        var blob = new Blob([response]);
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "Sample.pdf";
+        link.click();
+     }
+  });
+
+}
 
 
   

@@ -31,8 +31,11 @@ function getBotResponse(input,step) {
             return "<label for='currentAddress'>Period of Stay at Current Address</label><br><input type='text' id='currentAddress' name='fname'>  <br> <label for='fname'>Residential Type</label> <br> <select name='languages' id='residentialType'><option value='Ownned'>Ownned</option><option value='Rented'>Rented</option><option value='Parental'>Parental</option><option value='PG'>PG</option><option value='others'>others</option></select>  <br> <label for='fname'>Address Type</label> <br>  <select name='languages' id='AddressProof'><option value='Permanent'>Permanent</option><option value='Present'>Present</option></select> </br> <label for='fname'>Period of Stay at Current </label><br><input type='text' id='submitdocument' name='fname'> <button onclick='submitDocument()'>submit</button>";
             break;
         case 7:
-            return "<iframe style='border-color: black; border-width: 5px;height: 175px; width: 240px' src='/sign' title='W3Schools Free Online Web Tutorials'></iframe>";
+            return "<iframe style='border-color: black; border-width: 5px;height: 175px; width: 240px' id='iframe' src='/sign' title='W3Schools Free Online Web Tutorials '></iframe>";
             break; 
+            case 8:
+                return "<iframe style='border-color: black; border-width: 5px;height: 175px; width: 240px' id='iframe' src='/userPdf' title='W3Schools Free Online Web Tutorials '></iframe><button type='submit' value='submit' onclick='downloadpdf()'>Submit</button";
+                break; 
     }            
           
             

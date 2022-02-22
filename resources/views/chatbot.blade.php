@@ -65,7 +65,7 @@ html,
 </style>
 
 <body>
-<button type="button" class="btn btn-dark" onclick="window.location='{{  url('pdfgenerate') }}'">Renew Application</button>
+
     <!-- CHAT BAR BLOCK -->
     <div class="chat-bar-collapsible">
         <button id="chat-button" type="button" class="collapsible">Chat with us!

@@ -87,16 +87,17 @@ table.tbl-info {
             <td> </td>
         </tr>
         <tr>
+         
             <td width="40%">verifier relation:</td>
-            <td> $user->respondent_name_and_relation_with_candidate</td>
+            <td> {{$user['respondent_name_and_relation_with_candidate']}}</td>
         </tr>
         <tr>
             <td width="40%" >Address: </td>
-            <td> $user->period_of_stay</td>
+            <td>{{$user['period_of_stay']}}</td>
         </tr>
         <tr>
             <td width="40%" >Type of Address: </td>
-            <td> $user->address_type</td>
+            <td> {{$user['address_type']}}</td>
         </tr>
         <tr>
             <td width="40%">Mobile Number:</td>
@@ -108,23 +109,23 @@ table.tbl-info {
     <tbody>
         <tr>
             <td width="30%" >Ref id: </td>
-            <td> 23233</td>
+            <td> </td>
         </tr>
         <tr>
             <td width="30%" >Verification date </td>
-            <td> $user->verified_at</td>
+            <td> {{$user['verified_at']}}</td>
         </tr>
         <tr>
             <td width="30%" >verifier Name </td>
-            <td> 23233</td>
+            <td> </td>
         </tr>
         <tr>
             <td width="50%" >Comment </td>
-            <td> 23233</td>
+            <td> </td>
         </tr>
         <tr>
             <td width="30%">Verification status </td>
-            <td> 23233</td>
+            <td> </td>
         </tr>
     </tbody>
 </table>
@@ -144,6 +145,8 @@ table.tbl-info {
 <br>
 <br>
 <br>
+<br>
+<br><br>
       <table class="tbl-info">
     <tbody>
         <tr>

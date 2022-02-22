@@ -99,7 +99,8 @@ class UserController extends Controller
     }
     public function pdfgenerate(Request $request){
        $user =$request->resp;
- 
+        $external = $request->resp['external_id'];
+     
         $customPaper = array(0,0,900.00,1400.00);
         $pdf = PDF::loadView('userPdf',['user' => $user])->setPaper($customPaper, 'square');
         
@@ -109,6 +110,7 @@ class UserController extends Controller
 
         $pdf = public_path('pdf/'.$fileName);
         $user = $this->findbyid($external);
+       // dd($user);
         $user->fill([
             'pdf_path' =>  $pdf,
               ])->save();   

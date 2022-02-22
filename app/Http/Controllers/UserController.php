@@ -97,16 +97,21 @@ class UserController extends Controller
                     break;  
             }
     }
-    public function pdfgenerate(){
+    public function pdfgenerate(Request $request){
+       $user =$request->resp;
+ 
         $customPaper = array(0,0,900.00,1400.00);
-        $pdf = PDF::loadView('userPdf')->setPaper($customPaper, 'square');
-     return $pdf->download('asd.pdf');
-        // $path = public_path('pdf/');
-        // $fileName =  'asd.pdf';
-        // $pdf->save($path . '/' . $fileName);
+        $pdf = PDF::loadView('userPdf',['user' => $user])->setPaper($customPaper, 'square');
+        
+        $path = public_path('pdf/');
+        $fileName =  time().'.'. 'pdf' ;
+        $pdf->save($path . '/' . $fileName);
 
-        // $pdf = public_path('pdf/'.$fileName);
-   
-        // return response()->download($pdf);
+        $pdf = public_path('pdf/'.$fileName);
+        $user = $this->findbyid($external);
+        $user->fill([
+            'pdf_path' =>  $pdf,
+              ])->save();   
+        return response()->download($pdf);
     }
 }

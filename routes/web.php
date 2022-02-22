@@ -28,5 +28,5 @@ Route::get('userPdf', function () {
     return view('userPdf');
 });
 Route::post('ajaxRequest', [UserController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
-Route::get('pdfgenerate', [UserController::class, 'pdfgenerate'])->name('pdfgenerate');
+Route::post('pdfgenerate', [UserController::class, 'pdfgenerate'])->name('pdfgenerate');
 

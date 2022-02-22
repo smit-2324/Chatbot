@@ -10,6 +10,7 @@ class User extends Model
     protected $fillable = [
     'id',
     'external_id',
+    'actual_address',
     'selfie_path',
     'addr_proof',
     'id_proof',
@@ -19,6 +20,10 @@ class User extends Model
     'respondent_name_and_relation_with_candidate',
     'signature',
     'actual_data_lat',
-    'actual_data_long'
+    'actual_data_long',
+    'diff_actual_given',
+    'map_screenshot',
+    'pdf_path',
+    'verified_at'
     ];
 }

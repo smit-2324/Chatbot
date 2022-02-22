@@ -117,7 +117,6 @@ function yes(){
   var value =  $("#textInput").val('yes');
     var step = 1;
     getResponse(step);
-    
 }
 
 function latitude(){
@@ -144,7 +143,7 @@ function latitude(){
         $("#external").val(data);
         var external_id = $("#external").val();
         var session = sessionStorage.setItem("external_id", external_id);
-        var step = 7;
+        var step = 2;
         getResponse(step);
        }
     });

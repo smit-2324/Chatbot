@@ -33,9 +33,6 @@ function getBotResponse(input,step) {
         case 7:
             return "<iframe style='border-color: black; border-width: 5px;height: 175px; width: 240px' id='iframe' src='/sign' title='W3Schools Free Online Web Tutorials '></iframe>";
             break; 
-            case 8:
-                return "<iframe style='border-color: black; border-width: 5px;height: 175px; width: 240px' id='iframe' src='/userPdf' title='W3Schools Free Online Web Tutorials '></iframe><button type='submit' value='submit' onclick='downloadpdf()'>Submit</button";
-                break; 
     }            
           
             

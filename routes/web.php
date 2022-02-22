@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -16,7 +16,7 @@ use App\Http\Controllers\AjaxController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('chatbot');
 });
 Route::get('sign', function () {
     return view('sign');
@@ -24,8 +24,9 @@ Route::get('sign', function () {
 Route::get('map', function () {
     return view('map');
 });
-Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
-Route::get('pdfgenerate', [AjaxController::class, 'pdfgenerate'])->name('pdfgenerate');
 Route::get('userPdf', function () {
     return view('userPdf');
 });
+Route::post('ajaxRequest', [UserController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+Route::get('pdfgenerate', [UserController::class, 'pdfgenerate'])->name('pdfgenerate');
+

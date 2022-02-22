@@ -42,8 +42,7 @@ document.getElementById('save-png').addEventListener('click', function () {
            data:{data:data},
            async: false,
            success:function(resp){
-             step = 8
-            parent.getResponse(8);
+            parent.downloadpdf(resp);
             sessionStorage.clear();
            }
         });
@@ -52,7 +51,3 @@ document.getElementById('save-png').addEventListener('click', function () {
 document.getElementById('clear').addEventListener('click', function () {
   signaturePad.clear();
 });
-
-function download(){
-
-}

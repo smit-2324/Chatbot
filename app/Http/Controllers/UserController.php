@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use DB;
 
-class AjaxController extends Controller
+class UserController extends Controller
 {
     public function findbyid($id){
         return User::where('external_id',$id)->first();
